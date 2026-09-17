@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dineshkumar K — Case Files</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c10;
+    --bg-raised:#12151b;
+    --line:#242a33;
+    --gold:#e8b923;
+    --gold-dim:#8a6b17;
+    --text:#e7e5df;
+    --muted:#8b909a;
+    --crimson:#6e1414;
+    --beam: rgba(232,185,35,0.10);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  a{color:inherit;}
+  h1,h2,h3{font-family:'Oswald', sans-serif; letter-spacing:0.01em;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 20%, var(--beam), transparent 70%),
+      linear-gradient(180deg, #050608 0%, #0a0c10 60%, #0a0c10 100%);
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.06;
+    z-index:-1;
+  }
+  .skyline{
+    position:absolute;
+    bottom:0; left:0; right:0;
+    height:34vh;
+    z-index:0;
+    opacity:0.9;
+  }
+  .beam{
+    position:absolute;
+    top:-10%;
+    width:1px;
+    height:0;
+    z-index:0;
+  }
+  .beam svg{ display:block; }
+  .bat-mark{
+    width:92px;
+    height:auto;
+    margin-bottom:1.6rem;
+    filter:drop-shadow(0 0 22px rgba(232,185,35,0.35));
+    animation:emerge 1.4s ease-out both;
+  }
+  @keyframes emerge{
+    from{opacity:0; transform:translateY(-14px) scale(0.9);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 5.2rem);
+    font-weight:700;
+    color:var(--text);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    animation:emerge 1.4s ease-out 0.15s both;
+  }
+  .hero .role{
+    margin-top:0.9rem;
+    font-family:'Oswald', sans-serif;
+    font-size:clamp(1rem, 2.4vw, 1.3rem);
+    color:var(--gold);
+    font-weight:500;
+    letter-spacing:0.02em;
+    animation:emerge 1.4s ease-out 0.3s both;
+  }
+  .hero .objective{
+    margin-top:1.6rem;
+    max-width:560px;
+    color:var(--muted);
+    font-size:1.02rem;
+    animation:emerge 1.4s ease-out 0.45s both;
+  }
+  .hero .contact-row{
+    margin-top:2.2rem;
+    display:flex;
+    gap:1.6rem;
+    flex-wrap:wrap;
+    justify-content:center;
+    font-size:0.92rem;
+    color:var(--muted);
+    animation:emerge 1.4s ease-out 0.6s both;
+  }
+  .hero .contact-row a{
+    text-decoration:none;
+    border-bottom:1px solid var(--gold-dim);
+    padding-bottom:2px;
+    transition:border-color 0.2s;
+  }
+  .hero .contact-row a:hover{ border-color:var(--gold); color:var(--gold); }
+  .scroll-cue{
+    position:absolute;
+    bottom:2rem;
+    font-size:0.75rem;
+    color:var(--muted);
+    letter-spacing:0.15em;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    padding:6rem 1.5rem;
+    max-width:840px;
+    margin:0 auto;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.8rem;
+    margin-bottom:3rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1rem;
+  }
+  .section-head .num{
+    font-family:'Oswald', sans-serif;
+    color:var(--gold-dim);
+    font-size:0.95rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3.4vw, 2.1rem);
+    font-weight:600;
+  }
+
+  /* ---------- CASE FILES / TIMELINE ---------- */
+  .case{
+    position:relative;
+    padding-left:2.2rem;
+    padding-bottom:3rem;
+    border-left:1px solid var(--line);
+  }
+  .case:last-child{ padding-bottom:0; }
+  .case::before{
+    content:"";
+    position:absolute;
+    left:-6px;
+    top:0.35rem;
+    width:11px;
+    height:11px;
+    background:var(--bg);
+    border:2px solid var(--gold);
+    border-radius:50%;
+  }
+  .case .dates{
+    font-size:0.82rem;
+    color:var(--gold);
+    font-family:'Oswald', sans-serif;
+    letter-spacing:0.03em;
+  }
+  .case h3{
+    font-size:1.25rem;
+    margin-top:0.3rem;
+    font-weight:600;
+  }
+  .case .org{
+    color:var(--muted);
+    font-size:0.95rem;
+    margin-top:0.15rem;
+  }
+  .case ul{
+    margin-top:0.9rem;
+    padding-left:1.1rem;
+    color:#c9c7c0;
+    font-size:0.95rem;
+  }
+  .case ul li{ margin-bottom:0.4rem; }
+  .case ul ul{ margin-top:0.4rem; }
+
+  /* ---------- UTILITY BELT / SKILLS ---------- */
+  .belt-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:1.2rem;
+  }
+  .belt-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:1.4rem 1.5rem;
+  }
+  .belt-card h4{
+    font-family:'Oswald', sans-serif;
+    color:var(--gold);
+    font-size:1rem;
+    font-weight:500;
+    margin-bottom:0.6rem;
+  }
+  .belt-card p{
+    color:var(--muted);
+    font-size:0.92rem;
+  }
+
+  /* ---------- TRAINING / EDUCATION ---------- */
+  .training{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    padding:1.6rem 1.8rem;
+    border-radius:2px;
+  }
+  .training h3{ font-size:1.15rem; font-weight:600; }
+  .training p{ color:var(--muted); margin-top:0.4rem; font-size:0.95rem; }
+
+  /* ---------- DOSSIER ---------- */
+  .dossier{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:1.4rem;
+  }
+  .dossier .item .label{
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--gold-dim);
+    font-family:'Oswald', sans-serif;
+  }
+  .dossier .item .value{
+    margin-top:0.3rem;
+    font-size:0.98rem;
+    color:var(--text);
+  }
+
+  /* ---------- FOOTER / SIGNAL ---------- */
+  footer{
+    text-align:center;
+    padding:5rem 1.5rem 4rem;
+    border-top:1px solid var(--line);
+    background:radial-gradient(ellipse 70% 90% at 50% 100%, var(--beam), transparent 70%);
+  }
+  footer h2{
+    font-size:clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom:1rem;
+  }
+  footer p.tag{
+    color:var(--muted);
+    max-width:420px;
+    margin:0 auto 2rem;
+  }
+  .cta{
+    display:inline-block;
+    background:var(--gold);
+    color:#0a0c10;
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    letter-spacing:0.02em;
+    padding:0.9rem 2.2rem;
+    border-radius:2px;
+    text-decoration:none;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(232,185,35,0.25);
+  }
+  footer .fine{
+    margin-top:3rem;
+    font-size:0.8rem;
+    color:#565a63;
+  }
+
+  a:focus-visible, .cta:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="bat-mark" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M100 12C92 2 78 -2 66 6C70 -2 62 -6 54 2C50 -6 34 -8 26 4C18 0 6 6 8 18C-2 16 -2 30 6 34C-2 40 2 52 12 52C8 60 16 70 26 66C24 76 36 82 44 76C46 84 58 86 64 78C68 86 82 86 86 78C90 86 100 88 100 78C100 88 110 86 114 78C118 86 132 86 136 78C142 86 154 84 156 76C164 82 176 76 174 66C184 70 192 60 188 52C198 52 202 40 194 34C202 30 202 16 192 18C194 6 182 0 174 4C166 -8 150 -6 146 2C138 -6 130 -2 134 6C122 -2 108 2 100 12Z" fill="#e8b923"/>
+  </svg>
+
+  <h1>Dineshkumar K.</h1>
+  <div class="role">Banking &amp; Finance Professional — CASA, Credit &amp; Cash Management</div>
+  <p class="objective">Looking for a challenging position where experience meets watchfulness — building customer relationships, growing portfolios, and protecting every ledger under my mapped branches.</p>
+
+  <div class="contact-row">
+    <a href="mailto:rabidinu26@gmail.com">rabidinu26@gmail.com</a>
+    <a href="tel:+916369232252">+91 63692 32252</a>
+    <span>Tamil Nadu, India</span>
+  </div>
+
+  <div class="scroll-cue">SCROLL — THE FILES ARE BELOW</div>
+</section>
+
+<section id="cases">
+  <div class="section-head">
+    <span class="num">01</span>
+    <h2>Case Files — Professional Experience</h2>
+  </div>
+
+  <div class="case">
+    <div class="dates">Jan 2025 — Oct 2025</div>
+    <h3>Senior Officer, B2</h3>
+    <div class="org">ESAF Small Finance Bank — Gudalur, Tamil Nadu</div>
+    <ul>
+      <li>Onboarded new customers and built lasting relationships from day one.</li>
+      <li>Drove incremental YTD CASA MAB growth across the branch.</li>
+      <li>Structured business loans for existing and new customers, including overdraft facilities, loans against property, business installment loans, gold loans and car loans.</li>
+      <li>Resolved customer service requests and cross-sold third-party products.</li>
+    </ul>
+  </div>
+
+  <div class="case">
+    <div class="dates">Sep 2024 — Dec 2024</div>
+    <h3>Senior Officer, CG5</h3>
+    <div class="org">CBSL — Chola Business Services Limited, Gudalur, Tamil Nadu</div>
+    <ul>
+      <li>Onboarded new and returning customers, sustaining strong relationships.</li>
+      <li>Sourced and retailed used commercial vehicle loans.</li>
+      <li>Handled customer queries while improving acquisition rates.</li>
+      <li>Cross-sold motor insurance and managed top-up loan customers.</li>
+      <li>Collected dues across the first 18 months of loan accounts.</li>
+      <li>Cross-sold PAC Insurance and HDFC Life insurance products.</li>
+    </ul>
+  </div>
+
+  <div class="case">
+    <div class="dates">Mar 2022 — Jun 2024</div>
+    <h3>Deputy Manager, Band II — Solution Manager</h3>
+    <div class="org">ICICI Bank Limited — Udhagamandalam, Tamil Nadu</div>
+    <ul>
+      <li>Managed current accounts to lift branch profitability, onboarding and retaining customers.</li>
+      <li>Drove incremental YTD CASA MAB growth across mapped branches.</li>
+      <li>Cross-sold business loans: overdraft facility, loan against property, business installment loan, gold loan, car loan.</li>
+      <li>Delivered digital solutions for retail clients — Corporate Internet Banking and Mobile Banking.</li>
+      <li>Ran Cash Management Services (payments and collections) via API and H2H, spanning cheque, cash and e-collections, plus bulk disbursement and internet-based cheque writing.</li>
+      <li>Hit monthly CMS setup and activation targets while building CASA value and fee income.</li>
+      <li>Managed payment gateway solutions — open mode and bill file upload — and Connected Banking integrations across payroll, ERP and accounting systems.</li>
+      <li>Supported Eazypay POS and mobile application, resolving queries across online and offline channels.</li>
+    </ul>
+  </div>
+
+  <div class="case">
+    <div class="dates">2021</div>
+    <h3>Sales Consultant</h3>
+    <div class="org">Hyundai — Gudalur, Tamil Nadu</div>
+    <ul>
+      <li>Attended to showroom customers and built new relationships.</li>
+      <li>Took new bookings through to retail, preparing and registering RTO paperwork.</li>
+      <li>Handled customer queries to improve the overall service experience.</li>
+    </ul>
+  </div>
+
+  <div class="case">
+    <div class="dates">2019 — 2021</div>
+    <h3>Finance Executive (Collection)</h3>
+    <div class="org">Fashion Gold Park — Gudalur, Tamil Nadu</div>
+    <ul>
+      <li>Ran daily cash and e-collections while handling queries and improving acquisition.</li>
+    </ul>
+  </div>
+
+  <div class="case">
+    <div class="dates">2014 — 2016</div>
+    <h3>Counter Sale Executive — Two-Wheeler Finance</h3>
+    <div class="org">Muthoot Capital Services Ltd — Ooty &amp; Gudalur, Tamil Nadu</div>
+    <ul>
+      <li>Attended to showroom customers, onboarding and retailing new two-wheeler loans.</li>
+      <li>Cross-sold business and gold loans to existing clients.</li>
+      <li>Managed top-up loan customers and collected dues across the first 3 months.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="belt">
+  <div class="section-head">
+    <span class="num">02</span>
+    <h2>The Utility Belt — Skills</h2>
+  </div>
+  <div class="belt-grid">
+    <div class="belt-card">
+      <h4>Relationship Banking</h4>
+      <p>Customer onboarding, retention and CASA growth across mapped branches.</p>
+    </div>
+    <div class="belt-card">
+      <h4>Credit &amp; Lending</h4>
+      <p>Overdraft, loan against property, business installment loans, gold and car loans.</p>
+    </div>
+    <div class="belt-card">
+      <h4>Cash Management Services</h4>
+      <p>API &amp; H2H collections, bulk disbursement, payment gateways, Connected Banking.</p>
+    </div>
+    <div class="belt-card">
+      <h4>Cross-Selling</h4>
+      <p>Motor, life and PAC insurance, third-party products, top-up loans.</p>
+    </div>
+    <div class="belt-card">
+      <h4>Digital Banking</h4>
+      <p>Corporate Internet Banking, Mobile Banking, Eazypay POS &amp; app support.</p>
+    </div>
+    <div class="belt-card">
+      <h4>Software</h4>
+      <p>C, C++, Microsoft Office.</p>
+    </div>
+  </div>
+</section>
+
+<section id="training">
+  <div class="section-head">
+    <span class="num">03</span>
+    <h2>Training</h2>
+  </div>
+  <div class="training">
+    <h3>B.Sc. (Computer Science)</h3>
+    <p>Dr. R.A.N.M. College of Arts and Science, Rangampalayam, Erode — 2013</p>
+  </div>
+</section>
+
+<section id="dossier">
+  <div class="section-head">
+    <span class="num">04</span>
+    <h2>Dossier</h2>
+  </div>
+  <div class="dossier">
+    <div class="item">
+      <div class="label">Area of Interest</div>
+      <div class="value">Finance</div>
+    </div>
+    <div class="item">
+      <div class="label">Languages</div>
+      <div class="value">Tamil, English, Malayalam</div>
+    </div>
+    <div class="item">
+      <div class="label">Hobbies</div>
+      <div class="value">Cricket, listening to music</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>Signal the Bat</h2>
+  <p class="tag">Open to the next case. Reach out by mail or phone — Gotham's ledgers never sleep, and neither does the follow-up.</p>
+  <a class="cta" href="mailto:rabidinu26@gmail.com">Email Dineshkumar</a>
+  <div class="fine">Dineshkumar K. — rabidinu26@gmail.com — +91 63692 32252</div>
+</footer>
+
+</body>
+</html>
